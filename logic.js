@@ -21,7 +21,7 @@
 */
 function getColor(number) {
   // Uncomment and complete
-  return /* ( Your code Here ) ?  Your code Here  :  Your code Here */;
+  return number > 10 ? "blue" : "red";
 }
 
 /* 
@@ -50,7 +50,13 @@ console.log(getColor(10) === "red");
 */
 function lightStatus(brightness) {
   let result = "";
-  // Put your logic here
+  return brightness == 0
+    ? "off"
+    : brightness > 0 && brightness < 200
+    ? "dimmed"
+    : brightness >= 200
+    ? "on"
+    : "off";
   return result;
 }
 
@@ -88,14 +94,33 @@ console.log(lightStatus(255) === "on");
 
 function getLightBulbStatusDisplayString(status) {
   let result = "";
-  /* uncomment and complete
-    switch( your code here ) {
-      case "your code here": 
-        your code here;
-        break;
-      etc...
-    }
-    */
+
+  switch (status) {
+    case "on":
+      result = "The house is bright!";
+      break;
+    case "dimmed":
+      result = "The house is nice and dim";
+      break;
+    case "deleted":
+      result = "The lightbulb has been removed from the system";
+      break;
+    case "off":
+      result = "The house is dark";
+      break;
+    case "broken":
+      result = "The house is dark and we can't turn the light on!";
+      break;
+    case "missing":
+      result = "The house is dark and we can't find the lightbulb!";
+      break;
+    case "offline":
+      result = "The house is dark and we can't find the lightbulb!";
+      break;
+    default:
+      result = "Something is wrong!";
+      break;
+  }
   return result;
 }
 
@@ -222,12 +247,32 @@ function updateLights(
   theyAreCooking,
   theyWentToBed
 ) {
-  // Write your code here!  You don't need to return anything, just call the given functions
-  // You should be using if else statements and the function arguments
-  // example of turning a light on
-  turnOnLight("livingRoomLight");
-  // example of turning off a light
-  turnOffLight("livingRoomLight");
+  if (!somebodyIsHome) {
+    turnOffLight("livingRoomLight");
+    turnOffLight("diningRoomLight");
+    turnOnLight("frontPorchLight");
+    turnOffLight("kitchenLight");
+    turnOffLight("bedroomLight");
+  } else {
+    if (!theyWentToBed) {
+      turnOnLight("livingRoomLight");
+      turnOnLight("diningRoomLight");
+    } else {
+      turnOnLight("bedroomLight");
+    }
+    if (theyAreCooking) {
+      turnOnLight("kitchenLight");
+    }
+    if (theyAreWatchingTV) {
+      turnOffLight("livingRoomLight");
+      turnOffLight("diningRoomLight");
+    }
+  }
+  if (itIsDarkOutside) {
+    turnOnLight("frontPorchLight");
+  } else {
+    turnOffLight("frontPorchLight");
+  }
 }
 
 /* 
