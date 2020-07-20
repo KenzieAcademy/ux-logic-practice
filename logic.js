@@ -20,8 +20,7 @@
     otherwise return "red";
 */
 function getColor(number) {
-  // Uncomment and complete
-  return /* ( Your code Here ) ?  Your code Here  :  Your code Here */;
+  return getColor.number > 10 ? "blue" : "red";
 }
 
 /* 
@@ -88,14 +87,33 @@ console.log(lightStatus(255) === "on");
 
 function getLightBulbStatusDisplayString(status) {
   let result = "";
-  /* uncomment and complete
-    switch( your code here ) {
-      case "your code here": 
-        your code here;
+ 
+  switch(status) {
+    case "on":
+      result = "The house is bright!";
+      break;
+    case "dimmed":
+        result = "The house is nice and dim";
         break;
-      etc...
-    }
-    */
+    case "deleted":
+      result = "The lightbulb has been removed from the system";
+      break;
+    case "off":
+        result = "The house is dark";
+        break;
+    case "broken":
+      result = "The house is dark and we can't turn the light on!";
+      break;
+    case "offline":
+        result = "The house is dark and we can't find the lightbulb!";
+        break;
+    case "on":
+      result = "The house is bright!";
+      break;
+    default:
+        result = "Something is wrong!";
+        break;
+        
   return result;
 }
 
@@ -229,11 +247,32 @@ function updateLights(
   // example of turning off a light
   turnOffLight("livingRoomLight");
 }
+ 
+    if (itIsDarkOutside) {
+      turnOnLight("frontPorchLight")
+    } else {
+      turnOffLight("frontPorchLight")
+    } 
+    
+  if (somebodyIsHome){
+          if (!theyWentToBed) {
+            turnOnLight("livingRoomLight")
+            turnOnLight("diningRoomLight")
+      } 
+      
+      if (theyAreCooking) {
+          turnOnLight("kitchenLight")
+} else if (theyAreWatchingTV) {
+         turnOffLight("livingRoomLight")
+         turnOffLight("diningRoomLight")
+    } else if (theyWentToBed) {
+         turnOnLight("bedroomLight")
+    }
+  }
+    
+  //  -------TESTS---------------------------------------------------------------
+  //  Run these commands to make sure you did it right. They should all be true.
 
-/* 
-   -------TESTS---------------------------------------------------------------
-   Run these commands to make sure you did it right. They should all be true.
-*/
 console.log("-----Tests for Exercise Four-----");
 
 console.log("* Check if they are all off.");
@@ -300,4 +339,5 @@ console.log(
     currentLights.kitchenLight == "off" &&
     currentLights.frontPorchLight == "on" &&
     currentLights.bedroomLight == "on"
-);
+)
+}
