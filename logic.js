@@ -50,15 +50,29 @@ console.log(getColor(10) === "red");
 */
 function lightStatus(brightness) {
   let result = "";
-  return brightness == 0
-    ? "off"
-    : brightness > 0 && brightness < 200
-    ? "dimmed"
-    : brightness >= 200
-    ? "on"
-    : "off";
+  if (brightness == 0) {
+    result = "off";
+  } else if (brightness > 0 && brightness < 200) {
+    result = "dimmed";
+  } else if (brightness >= 200) {
+    result = "on";
+  } else "off";
   return result;
 }
+
+// or in ternary
+
+// function lightStatus(brightness) {
+//   let result = "";
+//   return brightness == 0
+//     ? "off"
+//     : brightness > 0 && brightness < 200
+//     ? "dimmed"
+//     : brightness >= 200
+//     ? "on"
+//     : "off";
+//   return result;
+// }
 
 /* 
    -------TESTS---------------------------------------------------------------
