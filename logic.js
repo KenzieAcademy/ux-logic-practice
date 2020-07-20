@@ -48,10 +48,18 @@ function getColor(number) {
 //     otherwise if the brightness is greater than zero but less that 200, return "dimmed"
 //     if the brightness is greater than or equal to 200, then return "on"
 // */
-// function lightresult(brightness) {
+function lightresult(brightness) {
    let result = "";
- 
+   if (brightness === 0) {
+     return "off";
+   }else if (brightness > 0 && brightness < 200){
+   return "dimmed";
+  }else (brightness >=200);{
+   return "on";
+}
 
+  return brightness;
+}
 // /* 
 //    -------TESTS---------------------------------------------------------------
 //    Run these commands to make sure you did it right. They should all be true.
@@ -84,33 +92,37 @@ function getColor(number) {
     If the lightbulb is any other value, then return "Something is wrong!"
 */
 // uncomment and complete
- function getLightBulbresultDisplayString() {
-  let result = "status";
+ function getLightBulbresultDisplayString(status) {
+  let result = "";
   
-    switch(result) {
+    switch(status) {
       case "on": 
-      console.log("The house is bright!");
+        result = "The house is bright!";
         break;
       case "dimmed":
-      console.log("The house is nice and dim!");
+        result= "The house is nice and dim";
         break;
       case "deleted":
-      console.log("The lightbulb has been removed from the system");
+        result = "The lightbulb has been removed from the system";
         break;
       case "off":
-      console.log("The house is dark");
+        result = "The house is dark";
         break;
       case "broken":
-      console.log( "The house is dark and we can't turn the light on!");
+       result =  "The house is dark and we can't turn the light on!";
+        break;
+      case "offline":
+        result = "The house is dark and we can't find the lightbulb!"
         break;
       case "missing":
-      console.log( "The house is dark and we can't find the lightbulb!");
+        result =  "The house is dark and we can't find the lightbulb!";
         break;
       default: 
-      console.log("Something is wrong!");
+        result = "Something is wrong!";
+        break;
   }
     return result;
-
+}
 
 /* 
    -------TESTS---------------------------------------------------------------
@@ -313,4 +325,4 @@ console.log(
     currentLights.kitchenLight == "off" &&
     currentLights.frontPorchLight == "on" &&
     currentLights.bedroomLight == "on"
-};
+)
