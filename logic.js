@@ -19,8 +19,9 @@
     If the number is > 10, return "blue"
     otherwise return "red";
 */
-function getColor(number) {
+
 //   // Uncomment and complete
+function getColor(number) {
    return  (number > 10) ?  "blue" :  "red";
  }
 
@@ -166,12 +167,12 @@ console.log(getLightBulbresultDisplayString(false) === "Something is wrong!");
 console.log("* Check for null");
 console.log(getLightBulbresultDisplayString(null) === "Something is wrong!");
 
-/* ------------------------------------------------
-    Exercise Four
+------------------------------------------------
+//     // Exercise Four
 
-    Now you need to write the logic for the entire home to control the lights.
+//     // Now you need to write the logic for the entire home to control the lights.
 
-    You have the following Lightbulbs in the house:
+//     // You have the following Lightbulbs in the house:
 
     livingRoomLight
     diningRoomLight
@@ -179,7 +180,7 @@ console.log(getLightBulbresultDisplayString(null) === "Something is wrong!");
     frontPorchLight
     bedroomLight
 
-    Your home tells you the following conditions:
+//     // Your home tells you the following conditions:
 
     somebodyIsHome
     theyAreWatchingTV
@@ -187,23 +188,32 @@ console.log(getLightBulbresultDisplayString(null) === "Something is wrong!");
     theyAreCooking
     theyWentToBed
 
-    They are all booleans.
+//     // They are all booleans.
 
 
-    Implement this logic
+//     // Implement this logic
 
-    If it's dark out, the porch light should be on.  If it's not dark, then it's off.
-    If nobody home, then turn all the lights off (except the porch light). 
-    If someone is home but they haven't gone to bed, then the living room and dining room lights should be on.
-    if someone is cooking, then the kitchen light should be on.
-    However, if they are watching TV, then turn off the livingroom and dining room lights.
-    If they are in bed, then the bedroom light should be on.
-*/
+//     // If it's dark out, the porch light should be on.  If it's not dark, then it's off.
+    
+   
+//     // If nobody home, then turn all the lights off (except the porch light).
+//     // If someone is home but they haven't gone to bed, then the living room and dining room lights should be on.
+    
 
-/*
-   -------START OF GIVEN CODE - DO NOT EDIT ------------------------------------
-   But do read through through this code.  Try to understand what it's doing.
-*/
+//     // However, if they are watching TV, then turn off the livingroom and dining room lights.
+//     // If they are in bed, then the bedroom light should be on.
+
+
+
+
+
+
+
+
+// /*
+//    -------START OF GIVEN CODE - DO NOT EDIT ------------------------------------
+//    But do read through through this code.  Try to understand what it's doing.
+// */
 
 let currentLights = {};
 function resetLights() {
@@ -247,6 +257,26 @@ function updateLights(
   theyAreCooking,
   theyWentToBed
 ) {
+
+  if (itIsDarkOutside) {
+    turnOnLight("frontPorchLight")
+  } else {
+    turnOffLight("frontPorchLight")
+  }
+  if(somebodyIsHome) {
+    if(!theyWentToBed){
+      turnOnLight("livingRoomLight")
+      turnOnLight("diningRoomLight")
+    }
+  } if (theyAreCooking) {
+    turnOnLigh("kitchenLight")
+  }else if ("theyAreWatchingTV")
+    turnOffLight("livingRoomLight")
+    turnOffLight ("diningRoomLight")
+  if (theyWentToBed) {
+    turnOnLight("bedroomLight")
+  }
+  
   // Write your code here!  You don't need to return anything, just call the given functions
   // You should be using if else statements and the function arguments
   // example of turning a light on
