@@ -192,6 +192,7 @@ console.log(getLightBulbStatusDisplayString(null) === "Something is wrong!");
     Implement this logic
 
     If it's dark out, the porch light should be on.  If it's not dark, then it's off.
+    
     If nobody home, then turn all the lights off (except the porch light). 
     If someone is home but they haven't gone to bed, then the living room and dining room lights should be on.
     if someone is cooking, then the kitchen light should be on.
@@ -239,6 +240,7 @@ function turnOffLight(lightName) {
 /* 
    -------YOUR CODE-----------------------------------------------------------
 */
+
 function updateLights(
   somebodyIsHome,
   theyAreWatchingTV,
@@ -246,12 +248,33 @@ function updateLights(
   theyAreCooking,
   theyWentToBed
 ) {
+  if (somebodyIsHome) {
+    if(!theyWentToBed) {
+      turnOnLight("livingRoomLight")
+      turnOnLight("diningRoomLight")
+    }
+    if (theyAreCooking) {
+      turnOnLight("kitchenLight")
+    } else if (theyAreWatchingTV) {
+      turnOffLight("livingRoomLight")
+      turnOffLight("diningRoomLight")
+    }
+  }
+  if (itIsDarkOutside) {
+    turnOnLight("frontPorchLight")
+  } else {
+    turnOffLight("frontPorchLight")
+  }
+  if (theyWentToBed) {
+    turnOnLight("bedroomLight")
+  }
   // Write your code here!  You don't need to return anything, just call the given functions
+  
   // You should be using if else statements and the function arguments
   // example of turning a light on
-  turnOnLight("livingRoomLight");
-  // example of turning off a light
-  turnOffLight("livingRoomLight");
+  // turnOnLight("livingRoomLight");
+  // // example of turning off a light
+  // turnOffLight("livingRoomLight");
 }
 
 /* 
